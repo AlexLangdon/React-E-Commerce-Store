@@ -1,4 +1,6 @@
-export const SHOP_DATA = [
+import Collection from "../../models/Collection";
+
+export const SHOP_DATA: Array<Collection> = [
 	{
 		title: 'Hats',
 		routeName: 'hats',

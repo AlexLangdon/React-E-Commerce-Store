@@ -1,0 +1,14 @@
+.collection-item {
+	display: inline-block;
+	min-width: 20%;
+	max-width: 50%;
+	margin: 20px;
+
+	.item-media {
+		height: 300px;
+	}
+	
+	div.item-name {
+		padding: 12px;
+	}
+}
