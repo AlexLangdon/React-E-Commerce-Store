@@ -7,23 +7,28 @@ export default class DirectoryMenu extends Component {
 	rows: Array<MenuItemProps> = [
 		{
 			title: "HATS",
-			imageUrl: "directory-menu/hats.jpg"
+			imageUrl: "directory-menu/hats.jpg",
+			linkUrl: "hats"
 		},
 		{
 			title: "JACKETS",
-			imageUrl: "directory-menu/jackets.jpg"
+			imageUrl: "directory-menu/jackets.jpg",
+			linkUrl: "jackets"
 		},
 		{
 			title: "SHOES",
-			imageUrl: "directory-menu/shoes.jpg"
+			imageUrl: "directory-menu/shoes.jpg",
+			linkUrl: "shoes"
 		},
 		{
 			title: "WOMENS",
-			imageUrl: "directory-menu/womens.jpg"
+			imageUrl: "directory-menu/womens.jpg",
+			linkUrl: "womens"
 		},
 		{
 			title: "MENS",
-			imageUrl: "directory-menu/mens.jpg"
+			imageUrl: "directory-menu/mens.jpg",
+			linkUrl: "mens"
 		}
 	]
 
