@@ -7,7 +7,7 @@ export default function CollectionPreviewItem(props: CollectionItem) {
 	return <Card className="collection-item">
 		<CardMedia className="item-media" image={props.imageUrl} />
 		<CardContent className="item-name d-flex justify-content-between">
-			<span>{props.name}</span> <span>£{props.price}</span>
+			<span>{props.name}</span> <span className="ml-2">£{props.price}</span>
 		</CardContent>
 	</Card>
 }

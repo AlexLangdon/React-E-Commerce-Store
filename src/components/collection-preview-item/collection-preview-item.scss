@@ -1,11 +1,16 @@
 .collection-item {
-	display: inline-block;
-	min-width: 20%;
-	max-width: 50%;
-	margin: 20px;
+	display: inline-flex;
+	vertical-align: top;
+	flex-direction: column;
+	min-width: 150px;
+	width: 22%;
+	margin: 20px 10px;
 
 	.item-media {
-		height: 300px;
+		width: 100%;
+		min-height: 170px;
+		height: 30vh;
+		max-height: 300px;
 	}
 	
 	div.item-name {
