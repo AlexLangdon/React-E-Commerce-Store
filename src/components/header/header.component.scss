@@ -1,0 +1,21 @@
+.header {
+	height: 70px;
+	margin: 20px 0;
+
+	.logo-container {
+		height: 100%;
+		width: 70px;
+		padding: 12px;
+		display: inline-block;
+	}
+
+	.options {
+		height: 100%;
+		float: right;
+
+		.option {
+			display: inline-block;
+			color: black;
+		}
+	}
+}

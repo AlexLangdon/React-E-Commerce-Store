@@ -1,4 +1,3 @@
-import { Container } from "@material-ui/core";
 import React, { Component } from "react";
 import MenuItem, { MenuItemProps } from "../menu-item/menu-item.component";
 import "./directory-menu.component.scss";
@@ -33,10 +32,10 @@ export default class DirectoryMenu extends Component {
 	]
 
 	render() {
-		return <Container className="directory-menu">
+		return <div className="directory-menu">
 			{
 				this.rows.map((item, i) => <MenuItem key={i} {...item} />)
 			}
-		</Container>
+		</div>
 	}
 }
