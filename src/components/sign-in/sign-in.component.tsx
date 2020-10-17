@@ -1,4 +1,4 @@
-import { Button, FormControl, FormGroup, Input, InputLabel } from "@material-ui/core";
+import { Button, FormGroup, TextField } from "@material-ui/core";
 import React from "react";
 
 export class SignIn extends React.Component {
@@ -14,16 +14,10 @@ export class SignIn extends React.Component {
 				<h5>Sign in with your email and password</h5>
 				<form>
 					<FormGroup>
-						<FormControl>
-							<InputLabel htmlFor="component-simple">Email</InputLabel>
-							<Input inputProps={{ "aria-label": "email" }} />
-						</FormControl>
-					</FormGroup>
-					<FormGroup>
-						<FormControl>
-							<InputLabel htmlFor="component-simple">Password</InputLabel>
-							<Input inputProps={{ "aria-label": "password" }} />
-						</FormControl>
+						<TextField label="Email" type="email" id="sign-in-email"
+							inputProps={{ "aria-label": "sign-in-email" }} />
+						<TextField label="Password" type="password" id="sign-in-password"
+							inputProps={{ "aria-label": "sign-in-password" }} />
 					</FormGroup>
 					<Button variant="contained" color="primary" className="mr-3 mt-3">
 						Sign In
