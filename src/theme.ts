@@ -10,7 +10,8 @@ export const appTheme = createMuiTheme({
 	},
 	palette: {
 		primary: {
-			main: "#000"
+			main: "#000",
+			dark: "#333"
 		},
 		secondary: blue
 	}
