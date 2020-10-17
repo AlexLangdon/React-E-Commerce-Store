@@ -2,9 +2,22 @@ import { Button, FormGroup, TextField } from "@material-ui/core";
 import React from "react";
 
 export class SignIn extends React.Component {
-	state = {
+	private initialState = {
 		email: "",
-		password: ""
+		password: "",
+	} as const;
+
+	state = this.initialState;
+
+	handleSubmit = (event: any) => {
+		event.preventDefault();
+
+		this.setState(this.initialState);
+	}
+
+	handleChange = (event: any) => {
+		const { value, name } = event.target;
+		this.setState({ [name]: value });
 	}
 
 	render() {
@@ -12,14 +25,16 @@ export class SignIn extends React.Component {
 			<div className="sign-in">
 				<h2>I already have an account</h2>
 				<h5>Sign in with your email and password</h5>
-				<form>
+				<form onSubmit={this.handleSubmit}>
 					<FormGroup>
 						<TextField label="Email" type="email" id="sign-in-email"
-							inputProps={{ "aria-label": "sign-in-email" }} />
+							name="email" inputProps={{ "aria-label": "sign-in-email" }}
+							value={this.state.email} onChange={this.handleChange} required />
 						<TextField label="Password" type="password" id="sign-in-password"
-							inputProps={{ "aria-label": "sign-in-password" }} />
+							name="password" inputProps={{ "aria-label": "sign-in-password" }}
+							value={this.state.password} onChange={this.handleChange} required />
 					</FormGroup>
-					<Button variant="contained" color="primary" className="mr-3 mt-3">
+					<Button type="submit" variant="contained" color="primary" className="mr-3 mt-3">
 						Sign In
 					</Button>
 					<Button variant="contained" color="secondary" className="mr-3 mt-3">
