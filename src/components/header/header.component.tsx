@@ -4,7 +4,7 @@ import { ReactComponent as Logo } from "../../assets/n-logo.svg";
 import "./header.component.scss";
 
 export default function Header() {
-	return <div className="header">
+	return <div className="header d-flex justify-content-between flex-wrap">
 		<Link className="logo-container" to="/">
 			<Logo className="logo" />
 		</Link>
