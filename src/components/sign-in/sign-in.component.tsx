@@ -1,5 +1,6 @@
 import { Button, FormGroup, TextField } from "@material-ui/core";
 import React from "react";
+import { signInWithGoogle } from "../../firebase/firebase.utils";
 
 export class SignIn extends React.Component {
 	private initialState = {
@@ -37,7 +38,8 @@ export class SignIn extends React.Component {
 					<Button type="submit" variant="contained" color="primary" className="mr-3 mt-3">
 						Sign In
 					</Button>
-					<Button variant="contained" color="secondary" className="mr-3 mt-3">
+					<Button variant="contained" color="secondary" className="mr-3 mt-3"
+						onClick={signInWithGoogle}>
 						Sign In With Google
 					</Button>
 				</form>
