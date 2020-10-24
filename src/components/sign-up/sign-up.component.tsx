@@ -1,24 +1,45 @@
 import { Button, FormGroup, TextField } from "@material-ui/core";
 import React from "react";
+import { authService, createUserProfileDbDocument } from "../../firebase/firebase.utils";
 
 interface SignUpState {
-	email: string;
-	password: string;
+	displayName: string,
+	email: string,
+	password: string,
+	confirmPassword: string,
+	passwordError: string;
 }
 
 export class SignUp extends React.Component<{}, SignUpState> {
 	private initialState = {
-		name: "",
+		displayName: "",
 		email: "",
 		password: "",
-		password_confirm: ""
+		confirmPassword: "",
+		passwordError: ""
 	} as const;
 
 	state = this.initialState;
 
-	private handleSubmit = (event: any): void => {
+	private handleSubmit = async (event: any): Promise<void> => {
 		event.preventDefault();
-		this.setState(this.initialState);
+
+		const { displayName, email, password, confirmPassword } = this.state;
+
+		if (password !== confirmPassword) {
+			this.setState({
+				passwordError: "Passwords must match"
+			})
+			return;
+		}
+
+		try {
+			const { user } = await authService.createUserWithEmailAndPassword(email, password);
+			await createUserProfileDbDocument(user, { displayName });
+			this.setState(this.initialState);
+		} catch (error) {
+			console.error(error);
+		}
 	}
 
 	private handleChange = (event: any): void => {
@@ -34,7 +55,7 @@ export class SignUp extends React.Component<{}, SignUpState> {
 				<form onSubmit={this.handleSubmit}>
 					<FormGroup>
 						<TextField label="Display Name" type="text" id="sign-up-display-name"
-							name="name" value={this.state.name} onChange={this.handleChange}
+							name="displayName" value={this.state.displayName} onChange={this.handleChange}
 							inputProps={{ "aria-label": "sign-up-display-name" }} required />
 						<TextField label="Email" type="email" id="sign-up-email"
 							name="email" value={this.state.email} onChange={this.handleChange}
@@ -42,9 +63,10 @@ export class SignUp extends React.Component<{}, SignUpState> {
 						<TextField label="Password" type="password" id="sign-up-password"
 							name="password" value={this.state.password} onChange={this.handleChange}
 							inputProps={{ "aria-label": "sign-up-password" }} required />
-						<TextField label="Confirm Password" type="password" id="sign-up-password-confirm"
-							name="password_confirm" value={this.state.password_confirm}
-							onChange={this.handleChange}
+						<TextField label="Confirm Password" type="password" id="sign-up-confirm-password"
+							name="confirmPassword" value={this.state.confirmPassword}
+							onChange={this.handleChange} error={this.state.passwordError.length > 0}
+							helperText={this.state.passwordError}
 							inputProps={{ "aria-label": "sign-up-password-confirm" }} required />
 					</FormGroup>
 					<Button type="submit" variant="contained" color="primary" className="mr-3 mt-3">

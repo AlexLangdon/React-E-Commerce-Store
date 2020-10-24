@@ -4,14 +4,15 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 import Header from "./components/header/header.component";
-import { authUtil } from "./firebase/firebase.utils";
+import { authService, createUserProfileDbDocument } from "./firebase/firebase.utils";
+import User from "./models/User";
 import HomePage from "./pages/home-page/home-page.component";
 import { ShopPage } from "./pages/shop-page/shop-page.component";
 import SignInAndSignUpPage from "./pages/sign-in-page/sign-in-sign-up-page.component";
 import { appTheme } from "./theme";
 
 interface AppState {
-	currentUser: firebase.User | null;
+	currentUser: User | null;
 }
 
 export default class App extends React.Component<{}, AppState> {
@@ -22,9 +23,25 @@ export default class App extends React.Component<{}, AppState> {
 	}
 
 	componentDidMount(): void {
-		this.unsubFromAuth = authUtil.onAuthStateChanged(user => {
-			this.setState({ currentUser: user });
-			console.log(user);
+		this.unsubFromAuth = authService.onAuthStateChanged(async userAuth => {
+			if (userAuth) {
+				const userDocument = await createUserProfileDbDocument(userAuth, null);
+
+				userDocument?.onSnapshot(snapShot => {
+					const newUser = {
+						id: snapShot.id,
+						...snapShot.data()
+					} as User;
+
+					this.setState({
+						currentUser: newUser
+					})
+				})
+			} else {
+				this.setState({
+					currentUser: null
+				});
+			}
 		});
 	}
 

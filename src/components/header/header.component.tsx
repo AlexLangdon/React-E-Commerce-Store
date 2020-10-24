@@ -2,11 +2,12 @@ import PersonIcon from "@material-ui/icons/Person";
 import React from "react";
 import { Link } from "react-router-dom";
 import { ReactComponent as Logo } from "../../assets/n-logo.svg";
-import { authUtil } from "../../firebase/firebase.utils";
+import { authService } from "../../firebase/firebase.utils";
+import User from "../../models/User";
 import "./header.component.scss";
 
 interface HeaderProps {
-	currentUser: firebase.User | null;
+	currentUser: User | null;
 }
 
 export default function Header({ currentUser }: HeaderProps) {
@@ -24,7 +25,7 @@ export default function Header({ currentUser }: HeaderProps) {
 			{
 				currentUser ?
 					<>
-						<button className="option m-4" onClick={() => authUtil.signOut()}>
+						<button className="option m-4" onClick={() => authService.signOut()}>
 							SIGN OUT
 						</button>
 						<div className="user-label option m-4">
