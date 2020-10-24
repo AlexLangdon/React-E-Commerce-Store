@@ -17,5 +17,19 @@
 			display: inline-block;
 			color: black;
 		}
+
+		button {
+			background: none;
+			border: none;
+			
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+	
+	.user-label .person-icon {
+		vertical-align: sub;
+		margin: 0 5px;
 	}
 }
