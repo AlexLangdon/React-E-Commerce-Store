@@ -2,7 +2,12 @@ import { Button, FormGroup, TextField } from "@material-ui/core";
 import React from "react";
 import { signInWithGoogle } from "../../firebase/firebase.utils";
 
-export class SignIn extends React.Component {
+interface SignInState {
+	email: string;
+	password: string;
+}
+
+export class SignIn extends React.Component<{}, SignInState> {
 	private initialState = {
 		email: "",
 		password: "",
@@ -10,15 +15,14 @@ export class SignIn extends React.Component {
 
 	state = this.initialState;
 
-	handleSubmit = (event: any) => {
+	private handleSubmit = (event: any): void => {
 		event.preventDefault();
-
 		this.setState(this.initialState);
 	}
 
-	handleChange = (event: any) => {
+	private handleChange = (event: any): void => {
 		const { value, name } = event.target;
-		this.setState({ [name]: value });
+		this.setState({ [name]: value } as Pick<SignInState, keyof SignInState>);
 	}
 
 	render() {

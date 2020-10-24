@@ -1,7 +1,12 @@
 import { Button, FormGroup, TextField } from "@material-ui/core";
 import React from "react";
 
-export class SignUp extends React.Component {
+interface SignUpState {
+	email: string;
+	password: string;
+}
+
+export class SignUp extends React.Component<{}, SignUpState> {
 	private initialState = {
 		name: "",
 		email: "",
@@ -11,15 +16,14 @@ export class SignUp extends React.Component {
 
 	state = this.initialState;
 
-	handleSubmit = (event: any) => {
+	private handleSubmit = (event: any): void => {
 		event.preventDefault();
-
 		this.setState(this.initialState);
 	}
 
-	handleChange = (event: any) => {
+	private handleChange = (event: any): void => {
 		const { value, name } = event.target;
-		this.setState({ [name]: value });
+		this.setState({ [name]: value } as Pick<SignUpState, keyof SignUpState>);
 	}
 
 	render() {
