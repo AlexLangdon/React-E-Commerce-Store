@@ -1,6 +1,6 @@
 import { Button, FormGroup, TextField } from "@material-ui/core";
 import React from "react";
-import { signInWithGoogle } from "../../firebase/firebase.utils";
+import { authService, signInWithGoogle } from "../../firebase/firebase.utils";
 
 interface SignInState {
 	email: string;
@@ -15,9 +15,18 @@ export class SignIn extends React.Component<{}, SignInState> {
 
 	state = this.initialState;
 
-	private handleSubmit = (event: any): void => {
+	private handleSubmit = async (event: any): Promise<void> => {
 		event.preventDefault();
-		this.setState(this.initialState);
+
+		const { email, password } = this.state;
+
+		try {
+			await authService.signInWithEmailAndPassword(email, password);
+			this.setState(this.initialState);
+
+		} catch (error) {
+			console.error(error);
+		}
 	}
 
 	private handleChange = (event: any): void => {
