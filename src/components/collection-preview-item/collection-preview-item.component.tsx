@@ -1,7 +1,7 @@
 import { Card, CardContent, CardMedia } from "@material-ui/core";
 import React from "react";
 import CollectionItem from "../../models/CollectionItem";
-import "./collection-preview-item.scss";
+import "./collection-preview-item.component.scss";
 
 export default function CollectionPreviewItem(props: CollectionItem) {
 	return <Card className="collection-item">

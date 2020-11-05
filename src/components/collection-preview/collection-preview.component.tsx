@@ -1,6 +1,6 @@
 import React from "react";
 import Collection from "../../models/Collection";
-import CollectionPreviewItem from "../collection-preview-item/collection-preview-item";
+import CollectionPreviewItem from "../collection-preview-item/collection-preview-item.component";
 
 export default function CollectionPreview(props: Collection) {
 	return <div className="collection-preview">
