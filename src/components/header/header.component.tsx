@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { ReactComponent as Logo } from "../../assets/n-logo.svg";
 import { authService } from "../../firebase/firebase.utils";
 import { RootState } from "../../redux/root-reducer";
+import CartIcon from "../cart-icon/cart-icon.component";
 import "./header.component.scss";
 
 export default function Header() {
@@ -39,6 +40,9 @@ export default function Header() {
 						SIGN IN
 					</Link>
 			}
+			<div className="option m-4">
+				<CartIcon />
+			</div>
 		</div>
 	</div>
 }
