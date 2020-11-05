@@ -1,16 +1,17 @@
 import PersonIcon from "@material-ui/icons/Person";
 import React from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { ReactComponent as Logo } from "../../assets/n-logo.svg";
 import { authService } from "../../firebase/firebase.utils";
-import User from "../../models/User";
+import { RootState } from "../../redux/root-reducer";
 import "./header.component.scss";
 
-interface HeaderProps {
-	currentUser: User | null;
-}
+export default function Header() {
+	const { currentUser } = useSelector(
+		(state: RootState) => state.user
+	)
 
-export default function Header({ currentUser }: HeaderProps) {
 	return <div className="header d-flex justify-content-between flex-wrap">
 		<Link className="logo-container" to="/">
 			<Logo className="logo" />
