@@ -1,8 +1,8 @@
 
 import { Container, MuiThemeProvider } from "@material-ui/core";
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { BrowserRouter as Router, Redirect, Route, Switch } from "react-router-dom";
 import "./App.css";
 import Header from "./components/header/header.component";
 import { authService, createUserProfileDbDocument } from "./firebase/firebase.utils";
@@ -10,11 +10,15 @@ import User from "./models/User";
 import HomePage from "./pages/home-page/home-page.component";
 import { ShopPage } from "./pages/shop-page/shop-page.component";
 import SignInAndSignUpPage from "./pages/sign-in-page/sign-in-sign-up-page.component";
+import { RootState } from "./redux/root-reducer";
 import { setCurrentUser } from "./redux/user/user.reducer";
 import { appTheme } from "./theme";
 
 export default function App() {
 	const dispatch = useDispatch();
+	const { currentUser } = useSelector(
+		(state: RootState) => state.user
+	)
 
 	useEffect(() => {
 		// Sign in via Firebase auth service and return function for unsubscribing from Firebase
@@ -35,6 +39,10 @@ export default function App() {
 		return () => unsubFromAuth();
 	})
 
+	const redirectSignInPage = () => {
+		return currentUser ? <Redirect to="/" /> : <SignInAndSignUpPage />
+	}
+
 	return <Router>
 		<MuiThemeProvider theme={appTheme}>
 			<Container>
@@ -42,7 +50,7 @@ export default function App() {
 				<Switch>
 					<Route path="/" exact component={HomePage} />
 					<Route path="/shop" component={ShopPage} />
-					<Route path="/signin" component={SignInAndSignUpPage} />
+					<Route path="/signin" render={redirectSignInPage} />
 				</Switch>
 				<div>
 					Icons made by <a href="http://www.freepik.com/" title="Freepik">Freepik</a>
