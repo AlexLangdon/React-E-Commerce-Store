@@ -1,10 +1,11 @@
 import PersonIcon from "@material-ui/icons/Person";
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { ReactComponent as Logo } from "../../assets/n-logo.svg";
 import { authService } from "../../firebase/firebase.utils";
 import { RootState } from "../../redux/root-reducer";
+import Cart from "../cart-dropdown/cart-dropdown.component";
 import CartIcon from "../cart-icon/cart-icon.component";
 import "./header.component.scss";
 
@@ -12,6 +13,8 @@ export default function Header() {
 	const { currentUser } = useSelector(
 		(state: RootState) => state.user
 	)
+
+	const [isCartShown, setIsCartShown] = useState(false);
 
 	return <div className="header d-flex justify-content-between flex-wrap">
 		<Link className="logo-container" to="/">
@@ -40,9 +43,10 @@ export default function Header() {
 						SIGN IN
 					</Link>
 			}
-			<div className="option m-4">
+			<div className="option m-4" onClick={() => setIsCartShown(!isCartShown)}>
 				<CartIcon />
 			</div>
 		</div>
+		{isCartShown ? <Cart /> : null}
 	</div>
 }
