@@ -11,7 +11,7 @@ import HomePage from "./pages/home-page/home-page.component";
 import { ShopPage } from "./pages/shop-page/shop-page.component";
 import SignInAndSignUpPage from "./pages/sign-in-page/sign-in-sign-up-page.component";
 import { RootState } from "./redux/root-reducer";
-import { setCurrentUser } from "./redux/user/user.reducer";
+import { setCurrentUser } from "./redux/user/user.slice";
 import { appTheme } from "./theme";
 
 export default function App() {
@@ -20,6 +20,7 @@ export default function App() {
 		(state: RootState) => state.user
 	)
 
+	// Fire effect only on component mount and unmount
 	useEffect(() => {
 		// Sign in via Firebase auth service and return function for unsubscribing from Firebase
 		const unsubFromAuth = authService.onAuthStateChanged(async userAuth => {
@@ -30,14 +31,17 @@ export default function App() {
 						id: snapShot.id,
 						...snapShot.data()
 					} as User;
+
 					dispatch(setCurrentUser(newUser));
 				})
 			} else {
 				dispatch(setCurrentUser(null));
 			}
 		});
-		return () => unsubFromAuth();
-	})
+		return () => {
+			unsubFromAuth();
+		}
+	}, [])
 
 	const redirectSignInPage = () => {
 		return currentUser ? <Redirect to="/" /> : <SignInAndSignUpPage />
