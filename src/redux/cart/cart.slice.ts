@@ -1,18 +1,14 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import CartItemProps from "../../models/CartItemProps";
 import CollectionItem from "../../models/CollectionItem";
 
-interface CartEntry {
-	item: CollectionItem;
-	quantity: number;
-}
-
-const initialState: Array<CartEntry> = [];
+const initialState: Array<CartItemProps> = [];
 
 const cartSlice = createSlice({
 	name: "cart",
 	initialState,
 	reducers: {
-		addItemToCart(state, action: PayloadAction<CollectionItem>) {
+		addItemToCart(state: Array<CartItemProps>, action: PayloadAction<CollectionItem>) {
 			const itemToAdd = action.payload;
 			const itemCartIndex = state.findIndex(entry => entry.item.id === itemToAdd.id);
 			const newState = [...state];
@@ -32,7 +28,7 @@ const cartSlice = createSlice({
 
 			return newState;
 		},
-		removeItemFromCart(state, action: PayloadAction<CollectionItem>) {
+		removeItemFromCart(state: Array<CartItemProps>, action: PayloadAction<CollectionItem>) {
 			return state.map(entry => 
 				entry.item.id === action.payload.id 
 				? { ...entry, quantity: entry.quantity - 1 } 
