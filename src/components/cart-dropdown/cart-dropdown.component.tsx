@@ -22,7 +22,7 @@ export default function CartDropdown({ isShown, setIsShown }: CartDropdownProps)
 
 	return isShown ? (
 		<div className="cart-dropdown" >
-			<IconButton aria-label="close-cart" size="medium" className="close-button"
+			<IconButton aria-label="close-cart" size="medium" className="close-button" color="primary"
 				onClick={() => setIsShown(!isShown)}>
 				<CloseIcon fontSize="default" />
 			</IconButton>
