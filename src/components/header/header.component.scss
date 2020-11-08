@@ -16,16 +16,13 @@
 		.option {
 			display: inline-block;
 			color: black;
-		}
-
-		button {
 			background: none;
 			border: none;
 			
 			&:hover {
 				text-decoration: underline;
 			}
-		}
+		}		
 	}
 	
 	.user-label .person-icon {
