@@ -4,7 +4,9 @@
 
 	.logo-container {
 		height: 100%;
+		min-width: 50px;
 		width: 70px;
+		max-width: 18%;
 		padding: 12px;
 		display: inline-block;
 	}
