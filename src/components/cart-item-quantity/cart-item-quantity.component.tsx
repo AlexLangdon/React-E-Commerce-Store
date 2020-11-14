@@ -1,10 +1,11 @@
 import { IconButton } from "@material-ui/core";
-import AddIcon from '@material-ui/icons/Add';
-import RemoveIcon from '@material-ui/icons/Remove';
+import AddIcon from "@material-ui/icons/Add";
+import RemoveIcon from "@material-ui/icons/Remove";
 import React from "react";
 import { useDispatch } from "react-redux";
 import CartItemProps from "../../models/CartItemProps";
 import { addItemToCart, removeItemFromCart } from "../../redux/cart/cart.slice";
+import "./cart-item-quantity.component.scss";
 
 export default function CartItemQuantity(props: CartItemProps) {
 	const dispatch = useDispatch();
