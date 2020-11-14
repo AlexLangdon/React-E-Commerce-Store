@@ -28,15 +28,18 @@ const cartSlice = createSlice({
 
 			return newState;
 		},
-		removeItemFromCart(state: Array<CartItemProps>, action: PayloadAction<CollectionItem>) {
+		removeItemFromCart(state: Array<CartItemProps>, action: PayloadAction<number>) {
 			return state.map(entry => 
-				entry.item.id === action.payload.id 
+				entry.item.id === action.payload 
 				? { ...entry, quantity: entry.quantity - 1 } 
 				: entry
 			).filter(entry => entry.quantity > 0);
-		}
+		},
+		removeItemGroupFromCart(state: Array<CartItemProps>, action: PayloadAction<number>) {
+			return state.filter(entry => entry.item.id !== action.payload)
+		},
 	}
 })
 
-export const { addItemToCart, removeItemFromCart } = cartSlice.actions;
+export const { addItemToCart, removeItemFromCart, removeItemGroupFromCart } = cartSlice.actions;
 export default cartSlice.reducer;
