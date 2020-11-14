@@ -7,6 +7,7 @@ import "./App.css";
 import Header from "./components/header/header.component";
 import { authService, createUserProfileDbDocument } from "./firebase/firebase.utils";
 import User from "./models/User";
+import CheckoutPage from "./pages/checkout-page/checkout-page.component";
 import HomePage from "./pages/home-page/home-page.component";
 import { ShopPage } from "./pages/shop-page/shop-page.component";
 import SignInAndSignUpPage from "./pages/sign-in-page/sign-in-sign-up-page.component";
@@ -55,6 +56,7 @@ export default function App() {
 					<Route path="/" exact component={HomePage} />
 					<Route path="/shop" component={ShopPage} />
 					<Route path="/signin" render={redirectSignInPage} />
+					<Route path="/checkout" component={CheckoutPage} />
 				</Switch>
 				<div>
 					Icons made by <a href="http://www.freepik.com/" title="Freepik">Freepik</a>
