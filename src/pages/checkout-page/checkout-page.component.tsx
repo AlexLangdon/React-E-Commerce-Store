@@ -39,8 +39,8 @@ export default function CheckoutPage() {
 
 	return (
 		<div className="container">
-			<TableContainer className="row col-md-12">
-				<Table className="col-md-12">
+			<TableContainer className="row">
+				<Table>
 					<TableHead>
 						<TableRow>
 							<TableCell align="center">Product</TableCell>
