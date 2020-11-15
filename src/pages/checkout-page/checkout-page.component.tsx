@@ -10,7 +10,7 @@ import "./checkout-page.component.scss";
 
 export default function CheckoutPage() {
 	const dispatch = useDispatch();
-	const items = useSelector((rootState: RootState) => rootState.cart);
+	const items = useSelector((rootState: RootState) => rootState.cart.cartItems);
 	const totalCost = items.reduce(
 		(runningTotal, itemGroup) => runningTotal + itemGroup.quantity * itemGroup.item.price, 0
 	);
@@ -18,7 +18,11 @@ export default function CheckoutPage() {
 	const itemElements = items.map((itemGroup: CartItemProps) => {
 		return (
 			<TableRow key={itemGroup.item.id}>
-				<TableCell align="center"><img className="product-image" src={itemGroup.item.imageUrl} /></TableCell>
+				<TableCell align="center">
+					<img className="product-image"
+						src={itemGroup.item.imageUrl}
+						alt={itemGroup.item.name} />
+				</TableCell>
 				<TableCell align="center">{itemGroup.item.name}</TableCell>
 				<TableCell align="center">
 					<CartItemQuantity {...itemGroup} />
@@ -56,6 +60,5 @@ export default function CheckoutPage() {
 				</Table>
 			</TableContainer>
 		</div>
-
 	)
 }
