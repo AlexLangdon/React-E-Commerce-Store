@@ -3,9 +3,9 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import CollectionItem from "../../models/CollectionItem";
 import { addItemToCart } from "../../redux/cart/cart.slice";
-import "./collection-preview-item.component.scss";
+import "./store-item-card.component.scss";
 
-export default function CollectionPreviewItem(props: CollectionItem) {
+export default function StoreItemCard(props: CollectionItem) {
 	const dispatch = useDispatch();
 
 	return <Card className="collection-item">

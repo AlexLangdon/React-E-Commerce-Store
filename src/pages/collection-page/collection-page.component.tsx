@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { RouteComponentProps } from "react-router-dom";
-import CollectionPreview from "../../components/collection-preview/collection-preview.component";
+import CollectionPreview from "../../components/collection-view/collection-view.component";
 import Collection from "../../models/Collection";
 import { RootState } from "../../redux/root-reducer";
 
