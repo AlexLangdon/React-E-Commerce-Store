@@ -1,6 +1,6 @@
 
 import { Container, MuiThemeProvider } from "@material-ui/core";
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter as Router, Redirect, Route, Switch } from "react-router-dom";
 import "./App.css";
@@ -17,6 +17,7 @@ import { appTheme } from "./theme";
 
 export default function App() {
 	const dispatch = useDispatch();
+	const stableDispatch = useCallback(dispatch, []);
 	const { currentUser } = useSelector(
 		(state: RootState) => state.user
 	)
@@ -33,16 +34,16 @@ export default function App() {
 						...snapShot.data()
 					} as User;
 
-					dispatch(setCurrentUser(newUser));
+					stableDispatch(setCurrentUser(newUser));
 				})
 			} else {
-				dispatch(setCurrentUser(null));
+				stableDispatch(setCurrentUser(null));
 			}
 		});
 		return () => {
 			unsubFromAuth();
 		}
-	}, [])
+	}, [stableDispatch])
 
 	const redirectSignInPage = () => {
 		return currentUser ? <Redirect to="/" /> : <SignInAndSignUpPage />
