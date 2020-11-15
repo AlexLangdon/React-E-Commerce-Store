@@ -1,20 +1,23 @@
 import { Button, IconButton } from "@material-ui/core";
 import CloseIcon from '@material-ui/icons/Close';
-import React from "react";
-import { useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory, useLocation } from "react-router-dom";
+import { setCartShown, toggleCartShown } from "../../redux/cart/cart.slice";
 import { RootState } from "../../redux/root-reducer";
 import CartItem from "../cart-item/cart-item.component";
 import "./cart-dropdown.component.scss";
 
-interface CartDropdownProps {
-	isShown: boolean;
-	setIsShown: (newIsShowwn: boolean) => void;
-}
-
-export default function CartDropdown({ isShown, setIsShown }: CartDropdownProps) {
-	const cartItems = useSelector((state: RootState) => state.cart);
+export default function CartDropdown() {
+	const dispatch = useDispatch();
+	const cartItems = useSelector((state: RootState) => state.cart.cartItems);
+	const isShown = useSelector((state: RootState) => state.cart.isShown);
 	const history = useHistory();
+	const location = useLocation();
+
+	useEffect(() => {
+		dispatch(setCartShown(false));
+	}, [location]);
 
 	const cartItemElements = cartItems.length
 		? (cartItems.map(cartItem => <CartItem key={cartItem.item.id} {...cartItem} />))
@@ -23,7 +26,7 @@ export default function CartDropdown({ isShown, setIsShown }: CartDropdownProps)
 	return isShown ? (
 		<div className="cart-dropdown" >
 			<IconButton aria-label="close-cart" size="medium" className="close-button" color="primary"
-				onClick={() => setIsShown(!isShown)}>
+				onClick={() => dispatch(toggleCartShown())}>
 				<CloseIcon fontSize="default" />
 			</IconButton>
 			<div className="cart-items">
