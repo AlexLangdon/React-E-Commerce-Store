@@ -1,11 +1,11 @@
 import { Card, CardContent, CardMedia } from "@material-ui/core";
 import React from "react";
 import { useDispatch } from "react-redux";
-import CollectionItem from "../../models/CollectionItem";
+import StoreItem from "../../models/StoreItem";
 import { addItemToCart } from "../../redux/cart/cart.slice";
 import "./store-item-card.component.scss";
 
-export default function StoreItemCard(props: CollectionItem) {
+export default function StoreItemCard(props: StoreItem) {
 	const dispatch = useDispatch();
 
 	return <Card className="collection-item">

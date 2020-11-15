@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import CartItemProps from "../../models/CartItemProps";
-import CollectionItem from "../../models/CollectionItem";
+import StoreItem from "../../models/StoreItem";
 
 interface CartState {
 	isShown: boolean,
@@ -28,7 +28,7 @@ const cartSlice = createSlice({
 				isShown: action.payload
 			}
 		},
-		addItemToCart(state: CartState, action: PayloadAction<CollectionItem>): CartState {
+		addItemToCart(state: CartState, action: PayloadAction<StoreItem>): CartState {
 			const itemToAdd = action.payload;
 			const itemCartIndex = state.cartItems.findIndex(entry => entry.item.id === itemToAdd.id);
 			const newCartItems: Array<CartItemProps> = [...state.cartItems];

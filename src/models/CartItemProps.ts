@@ -1,6 +1,6 @@
-import CollectionItem from "./CollectionItem";
+import StoreItem from "./StoreItem";
 
 export default interface CartItemProps {
-	item: CollectionItem;
+	item: StoreItem;
 	quantity: number;
 }
