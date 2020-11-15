@@ -54,7 +54,7 @@ export default function CheckoutPage() {
 						{itemElements}
 						<TableRow>
 							<TableCell colSpan={4} />
-							<TableCell align="center">TOTAL: £{totalCost}</TableCell>
+							<TableCell align="center"><b>TOTAL: £{totalCost}</b></TableCell>
 						</TableRow>
 					</TableBody>
 				</Table>
