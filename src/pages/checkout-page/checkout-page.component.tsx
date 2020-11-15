@@ -3,19 +3,19 @@ import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import CartItemQuantity from "../../components/cart-item-quantity/cart-item-quantity.component";
-import CartItemProps from "../../models/CartItemProps";
-import { removeItemGroupFromCart } from "../../redux/cart/cart.slice";
+import CartEntryProps from "../../models/CartEntryProps";
+import { removeAllCartItemsById } from "../../redux/cart/cart.slice";
 import { RootState } from "../../redux/root-reducer";
 import "./checkout-page.component.scss";
 
 export default function CheckoutPage() {
 	const dispatch = useDispatch();
-	const items = useSelector((rootState: RootState) => rootState.cart.cartItems);
-	const totalCost = items.reduce(
-		(runningTotal, itemGroup) => runningTotal + itemGroup.quantity * itemGroup.item.price, 0
+	const entries = useSelector((rootState: RootState) => rootState.cart.cartEntries);
+	const totalCost = entries.reduce(
+		(runningTotal, entry) => runningTotal + entry.quantity * entry.item.price, 0
 	);
 
-	const itemElements = items.map((itemGroup: CartItemProps) => {
+	const entryElements = entries.map((itemGroup: CartEntryProps) => {
 		return (
 			<TableRow key={itemGroup.item.id}>
 				<TableCell align="center">
@@ -29,7 +29,7 @@ export default function CheckoutPage() {
 				</TableCell>
 				<TableCell align="center">£{itemGroup.item.price}</TableCell>
 				<TableCell align="center">
-					<IconButton onClick={() => dispatch(removeItemGroupFromCart(itemGroup.item.id))}>
+					<IconButton onClick={() => dispatch(removeAllCartItemsById(itemGroup.item.id))}>
 						<DeleteForeverIcon color="primary" />
 					</IconButton>
 				</TableCell>
@@ -51,7 +51,7 @@ export default function CheckoutPage() {
 						</TableRow>
 					</TableHead>
 					<TableBody>
-						{itemElements}
+						{entryElements}
 						<TableRow>
 							<TableCell colSpan={4} />
 							<TableCell align="center"><b>TOTAL: £{totalCost}</b></TableCell>

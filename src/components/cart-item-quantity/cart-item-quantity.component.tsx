@@ -3,11 +3,11 @@ import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
 import React from "react";
 import { useDispatch } from "react-redux";
-import CartItemProps from "../../models/CartItemProps";
-import { addItemToCart, removeItemFromCart } from "../../redux/cart/cart.slice";
+import CartEntryProps from "../../models/CartEntryProps";
+import { addItemToCart, removeSingleCartItemById } from "../../redux/cart/cart.slice";
 import "./cart-item-quantity.component.scss";
 
-export default function CartItemQuantity(props: CartItemProps) {
+export default function CartItemQuantity(props: CartEntryProps) {
 	const dispatch = useDispatch();
 
 	return (
@@ -18,7 +18,7 @@ export default function CartItemQuantity(props: CartItemProps) {
 			</IconButton>
 			<span className="quantity">{props.quantity}</span>
 			<IconButton color="primary" aria-label="remove-item" size="small"
-				onClick={() => dispatch(removeItemFromCart(props.item.id))}>
+				onClick={() => dispatch(removeSingleCartItemById(props.item.id))}>
 				<RemoveIcon />
 			</IconButton>
 		</div>

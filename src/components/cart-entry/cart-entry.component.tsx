@@ -1,13 +1,13 @@
 import React from "react";
-import CartItemProps from "../../models/CartItemProps";
+import CartEntryProps from "../../models/CartEntryProps";
 import CartItemQuantity from "../cart-item-quantity/cart-item-quantity.component";
-import "./cart-item.component.scss";
+import "./cart-entry.component.scss";
 
-export default function CartItem(props: CartItemProps) {
+export default function CartEntry(props: CartEntryProps) {
 	return (
-		<div className="cart-item">
+		<div className="cart-entry">
 			<img src={props.item.imageUrl} alt={props.item.name} />
-			<div className="item-details">
+			<div className="entry-details">
 				<span className="name">{props.item.name}</span>
 				<span className="price">£{props.item.price}</span>
 			</div>

@@ -7,8 +7,8 @@ import "./cart-icon.component.scss";
 
 export default function CartIcon() {
 	const dispatch = useDispatch();
-	const cartItemCount = useSelector((state: RootState) => state.cart.cartItems).reduce(
-		(runningTotal, item) => runningTotal + item.quantity, 0
+	const cartItemCount = useSelector((state: RootState) => state.cart.cartEntries).reduce(
+		(runningTotal, entry) => runningTotal + entry.quantity, 0
 	)
 
 	return (
