@@ -4,15 +4,13 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { ReactComponent as Logo } from "../../assets/n-logo.svg";
 import { authService } from "../../firebase/firebase.utils";
-import { RootState } from "../../redux/root-reducer";
+import { userSelector } from "../../redux/user/user.slice";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 import CartIcon from "../cart-icon/cart-icon.component";
 import "./header.component.scss";
 
 export default function Header() {
-	const { currentUser } = useSelector(
-		(state: RootState) => state.user
-	)
+	const currentUser = useSelector(userSelector);
 
 	return <div className="header d-flex justify-content-between flex-wrap">
 		<Link className="logo-container" to="/">

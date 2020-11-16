@@ -11,16 +11,13 @@ import CheckoutPage from "./pages/checkout-page/checkout-page.component";
 import HomePage from "./pages/home-page/home-page.component";
 import ShopPage from "./pages/shop-page/shop-page.component";
 import SignInAndSignUpPage from "./pages/sign-in-page/sign-in-sign-up-page.component";
-import { RootState } from "./redux/root-reducer";
-import { setCurrentUser } from "./redux/user/user.slice";
+import { setCurrentUser, userSelector } from "./redux/user/user.slice";
 import { appTheme } from "./theme";
 
 export default function App() {
 	const dispatch = useDispatch();
 	const stableDispatch = useCallback(dispatch, []);
-	const { currentUser } = useSelector(
-		(state: RootState) => state.user
-	)
+	const currentUser = useSelector(userSelector);
 
 	// Fire effect only on component mount and unmount
 	useEffect(() => {
