@@ -26,7 +26,11 @@ export default function CheckoutPage() {
 						</TableRow>
 					</TableHead>
 					<TableBody>
-						{entries.map((entry: CartEntryProps) => <CheckoutTableRow {...entry} />)}
+						{
+							entries.map((entry: CartEntryProps) => (
+								<CheckoutTableRow key={entry.item.id} {...entry} />
+							))
+						}
 						<TableRow>
 							<TableCell colSpan={4} />
 							<TableCell align="center"><b>TOTAL: £{totalCost}</b></TableCell>
