@@ -51,7 +51,7 @@ const cartSlice = createSlice({
 				cartEntries: newCartEntries
 			};
 		},
-		removeSingleCartItemById(state: CartState, action: PayloadAction<number>) {
+		removeSingleCartItemById(state: CartState, action: PayloadAction<number>): CartState {
 			const newCartItems = state.cartEntries.map(entry => 
 				entry.item.id === action.payload 
 				? { ...entry, quantity: entry.quantity - 1 } 
@@ -60,7 +60,7 @@ const cartSlice = createSlice({
 
 			return {
 				...state,
-				cartItems: newCartItems
+				cartEntries: newCartItems
 			}
 		},
 		removeAllCartItemsById(state: CartState, action: PayloadAction<number>): CartState {
