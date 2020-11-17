@@ -1,6 +1,7 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import CartEntryProps from "../../models/CartEntryProps";
 import StoreItem from "../../models/StoreItem";
+import { RootState } from "../root-reducer";
 
 interface CartState {
 	isShown: boolean,
@@ -73,6 +74,28 @@ const cartSlice = createSlice({
 		}
 	}
 })
+
+const selectCart = (state: RootState) => state.cart;
+export const cartIsShownSelector = createSelector(
+	selectCart, 
+	(cartState: CartState) => cartState.isShown
+);
+export const cartEntriesSelector = createSelector(
+	selectCart, 
+	(cartState: CartState) => cartState.cartEntries
+);
+export const cartItemsCountSelector = createSelector(
+	cartEntriesSelector, 
+	(cartEntries: Array<CartEntryProps>) => cartEntries.reduce(
+		(runningTotal: number, entry: CartEntryProps) => runningTotal + entry.quantity, 0
+	)
+);
+export const cartTotalCostSelector = createSelector(
+	cartEntriesSelector,
+	(cartEntries: Array<CartEntryProps>) => cartEntries.reduce(
+		(runningTotal, entry) => runningTotal + entry.quantity * entry.item.price, 0
+	)
+);
 
 export const { 
 	toggleCartShown,

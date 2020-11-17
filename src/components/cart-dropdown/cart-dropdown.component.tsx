@@ -4,16 +4,15 @@ import React, { useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
 import CartEntryProps from "../../models/CartEntryProps";
-import { setCartShown, toggleCartShown } from "../../redux/cart/cart.slice";
-import { RootState } from "../../redux/root-reducer";
+import { cartEntriesSelector, cartIsShownSelector, setCartShown, toggleCartShown } from "../../redux/cart/cart.slice";
 import CartEntry from "../cart-entry/cart-entry.component";
 import "./cart-dropdown.component.scss";
 
 export default function CartDropdown() {
 	const dispatch = useDispatch();
 	const stableDispatch = useCallback(dispatch, []);
-	const cartEntries = useSelector((state: RootState) => state.cart.cartEntries);
-	const isShown = useSelector((state: RootState) => state.cart.isShown);
+	const cartEntries = useSelector(cartEntriesSelector);
+	const isShown = useSelector(cartIsShownSelector);
 	const history = useHistory();
 	const location = useLocation();
 

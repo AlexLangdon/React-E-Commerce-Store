@@ -1,5 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSelector, createSlice } from "@reduxjs/toolkit";
 import Collection from "../../models/Collection";
+import { RootState } from "../root-reducer";
 
 const initialState: Array<Collection> = [
 	{
@@ -254,5 +255,18 @@ const storeItemsSlice = createSlice({
 	 initialState,
 	 reducers: {}
 })
+
+export const collectionsSelector = createSelector(
+	(state: RootState) => state.storeItems,
+	(collections: Array<Collection>) => collections
+)
+
+export const collectionWithRouteSelectorFactory = (targetRouteName: string) => createSelector(
+	collectionsSelector,
+	(collections: Array<Collection>) => collections.find(
+		(collection: Collection) => collection.routeName === targetRouteName
+	)
+)
+
 
 export default storeItemsSlice.reducer;

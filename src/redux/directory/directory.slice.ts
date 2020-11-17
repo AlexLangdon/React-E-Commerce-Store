@@ -1,5 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSelector, createSlice } from "@reduxjs/toolkit";
 import { MenuItemProps } from "../../components/menu-item/menu-item.component";
+import { RootState } from "../root-reducer";
 
 const initialState: Array<MenuItemProps> = [
 	{
@@ -34,5 +35,10 @@ const directorySlice = createSlice({
 	initialState,
 	reducers: {}
 })
+
+export const directorySelector = createSelector(
+	(state: RootState) => state.directory,
+	(directory: Array<MenuItemProps>) => directory
+)
 
 export default directorySlice.reducer;

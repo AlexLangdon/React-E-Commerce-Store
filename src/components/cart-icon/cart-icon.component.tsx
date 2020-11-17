@@ -1,15 +1,12 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ReactComponent as ShoppingIcon } from "../../assets/shopping-bag.svg";
-import { toggleCartShown } from "../../redux/cart/cart.slice";
-import { RootState } from "../../redux/root-reducer";
+import { cartItemsCountSelector, toggleCartShown } from "../../redux/cart/cart.slice";
 import "./cart-icon.component.scss";
 
 export default function CartIcon() {
 	const dispatch = useDispatch();
-	const cartItemCount = useSelector((state: RootState) => state.cart.cartEntries).reduce(
-		(runningTotal, entry) => runningTotal + entry.quantity, 0
-	)
+	const cartItemCount = useSelector(cartItemsCountSelector);
 
 	return (
 		<div className="cart-icon" onClick={() => dispatch(toggleCartShown())}>
