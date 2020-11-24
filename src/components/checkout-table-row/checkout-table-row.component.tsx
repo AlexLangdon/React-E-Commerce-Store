@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import CartEntryProps from "../../models/CartEntryProps";
 import { removeAllCartItemsById } from "../../redux/cart/cart.slice";
 import CartItemQuantity from "../cart-item-quantity/cart-item-quantity.component";
+import "./checkout-table-row.component.scss";
 
 export default function CheckoutTableRow(props: CartEntryProps) {
 	const dispatch = useDispatch();
