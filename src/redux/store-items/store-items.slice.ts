@@ -1,4 +1,4 @@
-import { createSelector, createSlice } from "@reduxjs/toolkit";
+import { createSelector, createSlice, OutputSelector } from "@reduxjs/toolkit";
 import Collection from "../../models/Collection";
 import { RootState } from "../root-reducer";
 
@@ -261,12 +261,14 @@ export const collectionsSelector = createSelector(
 	(collections: Array<Collection>) => collections
 );
 
-export const collectionWithRouteSelectorFactory = (targetRouteName: string) => createSelector(
-	collectionsSelector,
-	(collections: Array<Collection>) => collections.find(
-		(collection: Collection) => collection.routeName === targetRouteName
-	)
-);
+export const collectionWithRouteSelectorFactory = (targetRouteName: string):
+	OutputSelector<RootState, Collection | undefined, (res: Collection[]) => Collection | undefined> =>
+	createSelector(
+		collectionsSelector,
+		(collections: Array<Collection>) => collections.find(
+			(collection: Collection) => collection.routeName === targetRouteName
+		)
+	);
 
 
 export default storeItemsSlice.reducer;

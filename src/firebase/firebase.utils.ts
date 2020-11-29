@@ -1,4 +1,5 @@
 import firebase from "firebase";
+import User from "../models/User";
 import { firebaseConfig } from "./firebase.config";
 
 firebase.initializeApp(firebaseConfig);
@@ -6,12 +7,16 @@ export const authService = firebase.auth();
 
 const provider = new firebase.auth.GoogleAuthProvider();
 provider.setCustomParameters({ prompt: "select_account" });
-export const signInWithGoogle = () => authService.signInWithPopup(provider);
+export const signInWithGoogle = (): Promise<firebase.auth.UserCredential> => (
+	authService.signInWithPopup(provider)
+);
 
 const firestoreService = firebase.firestore();
 
-export const createUserProfileDbDocument = async (userAuth: firebase.User | null,
-	additionalData: any) => {
+export const createUserProfileDbDocument = async (
+	userAuth: firebase.User | null,
+	additionalData: Partial<User>
+): Promise<firebase.firestore.DocumentReference<firebase.firestore.DocumentData> | null> => {
 	if (!userAuth) {
 		return null;
 	}
