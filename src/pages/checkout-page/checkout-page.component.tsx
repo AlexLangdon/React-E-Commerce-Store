@@ -38,8 +38,10 @@ export default function CheckoutPage() {
 						<TableRow>
 							<TableCell colSpan={4}>
 								<Alert severity="warning">
-									<AlertTitle>Please use the following credit card details for testing:</AlertTitle>
-									Card number: 4242 4242 4242 4242 - Exp: 01/20 - CVV: 123
+									<AlertTitle>
+										Please use the following credit card details for testing:
+									</AlertTitle>
+									Card number: 4242 4242 4242 4242 - Exp: 01/50 - CVV: 123
 								</Alert>
 							</TableCell>
 							<TableCell align="center">
