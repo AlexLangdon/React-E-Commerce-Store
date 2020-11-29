@@ -9,7 +9,7 @@ import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 import CartIcon from "../cart-icon/cart-icon.component";
 import "./header.component.scss";
 
-export default function Header() {
+export default function Header(): JSX.Element {
 	const currentUser = useSelector(userSelector);
 
 	return <div className="header d-flex justify-content-between flex-wrap">

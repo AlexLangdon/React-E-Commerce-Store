@@ -8,7 +8,7 @@ import StripeCheckoutButton from "../../components/stripe-checkout-button/stripe
 import CartEntryProps from "../../models/CartEntryProps";
 import { cartEntriesSelector, cartTotalCostSelector } from "../../redux/cart/cart.slice";
 
-export default function CheckoutPage() {
+export default function CheckoutPage(): JSX.Element {
 	const entries = useSelector(cartEntriesSelector);
 	const totalCost = useSelector(cartTotalCostSelector);
 

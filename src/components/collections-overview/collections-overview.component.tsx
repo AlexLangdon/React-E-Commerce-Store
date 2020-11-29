@@ -4,7 +4,7 @@ import Collection from "../../models/Collection";
 import { collectionsSelector } from "../../redux/store-items/store-items.slice";
 import CollectionPreview from "../collection-view/collection-view.component";
 
-export default function CollectionsOverview() {
+export default function CollectionsOverview(): JSX.Element {
 	const collections = useSelector(collectionsSelector);
 
 	return <>

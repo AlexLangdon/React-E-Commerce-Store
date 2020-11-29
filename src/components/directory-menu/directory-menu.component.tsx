@@ -4,7 +4,7 @@ import { directorySelector } from "../../redux/directory/directory.slice";
 import MenuItem from "../menu-item/menu-item.component";
 import "./directory-menu.component.scss";
 
-export default function DirectoryMenu() {
+export default function DirectoryMenu(): JSX.Element {
 	const menuItems = useSelector(directorySelector);
 
 	return (

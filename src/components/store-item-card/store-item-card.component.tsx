@@ -5,7 +5,7 @@ import StoreItem from "../../models/StoreItem";
 import { addItemToCart } from "../../redux/cart/cart.slice";
 import "./store-item-card.component.scss";
 
-export default function StoreItemCard(props: StoreItem) {
+export default function StoreItemCard(props: StoreItem): JSX.Element {
 	const dispatch = useDispatch();
 
 	return <Card className="collection-item">

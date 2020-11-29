@@ -7,7 +7,7 @@ import CartEntryProps from "../../models/CartEntryProps";
 import { addItemToCart, removeSingleCartItemById } from "../../redux/cart/cart.slice";
 import "./cart-item-quantity.component.scss";
 
-export default function CartItemQuantity(props: CartEntryProps) {
+export default function CartItemQuantity(props: CartEntryProps): JSX.Element {
 	const dispatch = useDispatch();
 
 	return (

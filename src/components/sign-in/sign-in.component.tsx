@@ -1,5 +1,5 @@
 import { Button, FormGroup, TextField } from "@material-ui/core";
-import React from "react";
+import React, { ChangeEvent } from "react";
 import { authService, signInWithGoogle } from "../../firebase/firebase.utils";
 
 interface SignInState {
@@ -15,7 +15,7 @@ export class SignIn extends React.Component<{}, SignInState> {
 
 	state = this.initialState;
 
-	private handleSubmit = async (event: any): Promise<void> => {
+	private handleSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
 		event.preventDefault();
 
 		const { email, password } = this.state;
@@ -29,12 +29,12 @@ export class SignIn extends React.Component<{}, SignInState> {
 		}
 	};
 
-	private handleChange = (event: any): void => {
+	private handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
 		const { value, name } = event.target;
 		this.setState({ [name]: value } as Pick<SignInState, keyof SignInState>);
 	};
 
-	render() {
+	render(): JSX.Element {
 		return (
 			<div className="sign-in">
 				<h2>I already have an account</h2>

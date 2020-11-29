@@ -8,7 +8,7 @@ import { cartEntriesSelector, cartIsShownSelector, setCartShown, toggleCartShown
 import CartEntry from "../cart-entry/cart-entry.component";
 import "./cart-dropdown.component.scss";
 
-export default function CartDropdown() {
+export default function CartDropdown(): JSX.Element | null {
 	const dispatch = useDispatch();
 	const stableDispatch = useCallback(dispatch, []);
 	const cartEntries = useSelector(cartEntriesSelector);
