@@ -20,9 +20,6 @@ export default function Header(): JSX.Element {
 			<Link className="option m-4" to="/shop">
 				SHOP
 			</Link>
-			<Link className="option m-4" to="/shop">
-				CONTACT
-			</Link>
 			{
 				currentUser ?
 					<>
