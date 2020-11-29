@@ -24,5 +24,5 @@ export default function CheckoutTableRow(props: CartEntryProps) {
 				<DeleteForeverIcon color="primary" />
 			</IconButton>
 		</TableCell>
-	</TableRow>
+	</TableRow>;
 }

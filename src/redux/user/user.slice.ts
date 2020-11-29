@@ -3,7 +3,7 @@ import User from "../../models/User";
 import { RootState } from "../root-reducer";
 
 interface UserState {
-	currentUser: User | null
+	currentUser: User | null;
 }
 
 const initialState: UserState = {
@@ -17,10 +17,10 @@ const userSlice = createSlice({
 		setCurrentUser(state: UserState, action: PayloadAction<User | null>): UserState {
 			return {
 				currentUser: action.payload
-			}
+			};
 		}
 	}
-})
+});
 
 const selectUser = (state: RootState) => state.user;
 export const userSelector = createSelector(

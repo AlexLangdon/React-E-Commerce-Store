@@ -34,11 +34,11 @@ const directorySlice = createSlice({
 	name: "directory",
 	initialState,
 	reducers: {}
-})
+});
 
 export const directorySelector = createSelector(
 	(state: RootState) => state.directory,
 	(directory: Array<MenuItemProps>) => directory
-)
+);
 
 export default directorySlice.reducer;

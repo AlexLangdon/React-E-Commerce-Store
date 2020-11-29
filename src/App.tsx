@@ -14,7 +14,7 @@ import SignInAndSignUpPage from "./pages/sign-in-page/sign-in-sign-up-page.compo
 import { setCurrentUser, userSelector } from "./redux/user/user.slice";
 import { appTheme } from "./theme";
 
-export default function App() {
+export default function App(): JSX.Element {
 	const dispatch = useDispatch();
 	const stableDispatch = useCallback(dispatch, []);
 	const currentUser = useSelector(userSelector);

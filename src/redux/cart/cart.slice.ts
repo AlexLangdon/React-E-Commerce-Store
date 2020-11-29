@@ -4,8 +4,8 @@ import StoreItem from "../../models/StoreItem";
 import { RootState } from "../root-reducer";
 
 interface CartState {
-	isShown: boolean,
-	cartEntries: Array<CartEntryProps>
+	isShown: boolean;
+	cartEntries: Array<CartEntryProps>;
 }
 
 const initialState: CartState = {
@@ -21,13 +21,13 @@ const cartSlice = createSlice({
 			return {
 				...state,
 				isShown: !state.isShown
-			}
+			};
 		},
 		setCartShown(state: CartState, action: PayloadAction<boolean>): CartState {
 			return {
 				...state,
 				isShown: action.payload
-			}
+			};
 		},
 		addItemToCart(state: CartState, action: PayloadAction<StoreItem>): CartState {
 			const itemToAdd = action.payload;
@@ -44,7 +44,7 @@ const cartSlice = createSlice({
 				newCartEntries.push({
 					item: itemToAdd,
 					quantity: 1
-				})
+				});
 			}
 
 			return {
@@ -53,39 +53,39 @@ const cartSlice = createSlice({
 			};
 		},
 		removeSingleCartItemById(state: CartState, action: PayloadAction<number>): CartState {
-			const newCartItems = state.cartEntries.map(entry => 
-				entry.item.id === action.payload 
-				? { ...entry, quantity: entry.quantity - 1 } 
-				: entry
+			const newCartItems = state.cartEntries.map(entry =>
+				entry.item.id === action.payload
+					? { ...entry, quantity: entry.quantity - 1 }
+					: entry
 			).filter(entry => entry.quantity > 0);
 
 			return {
 				...state,
 				cartEntries: newCartItems
-			}
+			};
 		},
 		removeAllCartItemsById(state: CartState, action: PayloadAction<number>): CartState {
-			const newCartItems = state.cartEntries.filter(entry => entry.item.id !== action.payload)
-			
+			const newCartItems = state.cartEntries.filter(entry => entry.item.id !== action.payload);
+
 			return {
 				...state,
 				cartEntries: newCartItems
-			}
+			};
 		}
 	}
-})
+});
 
 const selectCart = (state: RootState) => state.cart;
 export const cartIsShownSelector = createSelector(
-	selectCart, 
+	selectCart,
 	(cartState: CartState) => cartState.isShown
 );
 export const cartEntriesSelector = createSelector(
-	selectCart, 
+	selectCart,
 	(cartState: CartState) => cartState.cartEntries
 );
 export const cartItemsCountSelector = createSelector(
-	cartEntriesSelector, 
+	cartEntriesSelector,
 	(cartEntries: Array<CartEntryProps>) => cartEntries.reduce(
 		(runningTotal: number, entry: CartEntryProps) => runningTotal + entry.quantity, 0
 	)
@@ -97,11 +97,11 @@ export const cartTotalCostSelector = createSelector(
 	)
 );
 
-export const { 
+export const {
 	toggleCartShown,
 	setCartShown,
-	addItemToCart, 
-	removeSingleCartItemById, 
-	removeAllCartItemsById 
+	addItemToCart,
+	removeSingleCartItemById,
+	removeAllCartItemsById
 } = cartSlice.actions;
 export default cartSlice.reducer;

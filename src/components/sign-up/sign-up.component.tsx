@@ -3,10 +3,10 @@ import React from "react";
 import { authService, createUserProfileDbDocument } from "../../firebase/firebase.utils";
 
 interface SignUpState {
-	displayName: string,
-	email: string,
-	password: string,
-	confirmPassword: string,
+	displayName: string;
+	email: string;
+	password: string;
+	confirmPassword: string;
 	passwordError: string;
 }
 
@@ -29,7 +29,7 @@ export class SignUp extends React.Component<{}, SignUpState> {
 		if (password !== confirmPassword) {
 			this.setState({
 				passwordError: "Passwords must match"
-			})
+			});
 			return;
 		}
 
@@ -40,12 +40,12 @@ export class SignUp extends React.Component<{}, SignUpState> {
 		} catch (error) {
 			console.error(error);
 		}
-	}
+	};
 
 	private handleChange = (event: any): void => {
 		const { value, name } = event.target;
 		this.setState({ [name]: value } as Pick<SignUpState, keyof SignUpState>);
-	}
+	};
 
 	render() {
 		return (
@@ -74,6 +74,6 @@ export class SignUp extends React.Component<{}, SignUpState> {
 					</Button>
 				</form>
 			</div>
-		)
+		);
 	}
 }

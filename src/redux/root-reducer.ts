@@ -11,14 +11,14 @@ const persistConfig: PersistConfig<RootState> = {
 	key: "root",
 	storage,
 	whitelist: ["cart"]
-}
+};
 
 const rootReducer = combineReducers({
 	user,
 	cart,
 	directory,
 	storeItems
-})
+});
 
-export type RootState = ReturnType<typeof rootReducer>
+export type RootState = ReturnType<typeof rootReducer>;
 export default persistReducer(persistConfig, rootReducer);
