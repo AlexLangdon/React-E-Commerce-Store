@@ -44,5 +44,5 @@ export default function Header() {
 				<CartDropdown />
 			</div>
 		</div>
-	</div>
+	</div>;
 }

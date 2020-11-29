@@ -11,5 +11,5 @@ export default function CollectionView(props: Collection) {
 				props.items.map((item: StoreItem) => <StoreItemCard key={item.id} {...item} />)
 			}
 		</div>
-	</div>
+	</div>;
 }

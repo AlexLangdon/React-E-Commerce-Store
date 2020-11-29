@@ -22,5 +22,5 @@ export default function CartItemQuantity(props: CartEntryProps) {
 				<RemoveIcon />
 			</IconButton>
 		</div>
-	)
+	);
 }

@@ -10,5 +10,5 @@ export default function SignInAndSignUpPage() {
 		<div className="col-md-6 mt-4">
 			<SignUp />
 		</div>
-	</div>
+	</div>;
 }

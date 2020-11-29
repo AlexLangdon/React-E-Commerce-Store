@@ -7,5 +7,5 @@ export default function ShopPage({ match }: RouteComponentProps) {
 	return <>
 		<Route exact path={`${match.path}`} component={CollectionsOverview} />
 		<Route path={`${match.path}/:collectionPath`} component={CollectionPage} />
-	</>
+	</>;
 }

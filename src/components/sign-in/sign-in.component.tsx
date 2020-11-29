@@ -27,12 +27,12 @@ export class SignIn extends React.Component<{}, SignInState> {
 		} catch (error) {
 			console.error(error);
 		}
-	}
+	};
 
 	private handleChange = (event: any): void => {
 		const { value, name } = event.target;
 		this.setState({ [name]: value } as Pick<SignInState, keyof SignInState>);
-	}
+	};
 
 	render() {
 		return (
@@ -57,6 +57,6 @@ export class SignIn extends React.Component<{}, SignInState> {
 					</Button>
 				</form>
 			</div>
-		)
+		);
 	}
 }

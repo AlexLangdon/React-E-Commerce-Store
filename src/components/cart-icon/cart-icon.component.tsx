@@ -13,5 +13,5 @@ export default function CartIcon() {
 			<ShoppingIcon className="shopping-icon" />
 			<span className="item-count">{cartItemCount}</span>
 		</div>
-	)
+	);
 }

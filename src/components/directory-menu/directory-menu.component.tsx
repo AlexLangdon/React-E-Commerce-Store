@@ -11,5 +11,5 @@ export default function DirectoryMenu() {
 		<div className="directory-menu">
 			{menuItems.map((item, i) => <MenuItem key={i} {...item} />)}
 		</div>
-	)
+	);
 }

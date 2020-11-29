@@ -50,7 +50,7 @@ export class SignUp extends React.Component<{}, SignUpState> {
 	render() {
 		return (
 			<div className="sign-in">
-				<h2>I don't have an account</h2>
+				<h2>I don&apos;t have an account</h2>
 				<h5>Sign up with your email and password</h5>
 				<form onSubmit={this.handleSubmit}>
 					<FormGroup>

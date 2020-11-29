@@ -13,5 +13,5 @@ export default function CartEntry(props: CartEntryProps) {
 			</div>
 			<CartItemQuantity {...props} />
 		</div>
-	)
+	);
 }

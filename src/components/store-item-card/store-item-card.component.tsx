@@ -17,5 +17,5 @@ export default function StoreItemCard(props: StoreItem) {
 		<CardContent className="item-name d-flex justify-content-between">
 			<span>{props.name}</span> <span className="ml-2">£{props.price}</span>
 		</CardContent>
-	</Card>
+	</Card>;
 }

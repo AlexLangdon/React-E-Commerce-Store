@@ -16,7 +16,7 @@ function MenuItem(props: MenuItemProps & RouteComponentProps) {
 		<div className="item-title">
 			{props.title}
 		</div>
-	</Card>
+	</Card>;
 }
 
 export default withRouter(MenuItem);
