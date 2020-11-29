@@ -16,7 +16,7 @@ export default function StripeCheckoutButton(props: { price: number }) {
 	return (
 		<StripeCheckout
 			label="Pay Now"
-			name="Nova Apparel Ltd."
+			name="Neo Apparel Ltd."
 			billingAddress
 			shippingAddress
 			description={`Your total is £${props.price}`}
