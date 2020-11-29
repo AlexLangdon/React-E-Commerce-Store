@@ -24,7 +24,7 @@ export default function App(): JSX.Element {
 		// Sign in via Firebase auth service and return function for unsubscribing from Firebase
 		const unsubFromAuth = authService.onAuthStateChanged(async userAuth => {
 			if (userAuth) {
-				const userDocument = await createUserProfileDbDocument(userAuth, null);
+				const userDocument = await createUserProfileDbDocument(userAuth, {});
 				userDocument?.onSnapshot(snapShot => {
 					const newUser = {
 						id: snapShot.id,
@@ -32,19 +32,19 @@ export default function App(): JSX.Element {
 					} as User;
 
 					stableDispatch(setCurrentUser(newUser));
-				})
+				});
 			} else {
 				stableDispatch(setCurrentUser(null));
 			}
 		});
 		return () => {
 			unsubFromAuth();
-		}
-	}, [stableDispatch])
+		};
+	}, [stableDispatch]);
 
 	const redirectSignInPage = () => {
-		return currentUser ? <Redirect to="/" /> : <SignInAndSignUpPage />
-	}
+		return currentUser ? <Redirect to="/" /> : <SignInAndSignUpPage />;
+	};
 
 	return <Router>
 		<MuiThemeProvider theme={appTheme}>
@@ -61,5 +61,5 @@ export default function App(): JSX.Element {
 				</div>
 			</Container>
 		</MuiThemeProvider>
-	</Router>
+	</Router>;
 }
