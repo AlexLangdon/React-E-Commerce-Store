@@ -9,6 +9,7 @@ import { authService, createUserProfileDbDocument } from "./firebase/firebase.ut
 import User from "./models/User";
 import CheckoutPage from "./pages/checkout-page/checkout-page.component";
 import HomePage from "./pages/home-page/home-page.component";
+import NotFoundPageComponent from "./pages/not-found-page/not-found-page.component";
 import ShopPage from "./pages/shop-page/shop-page.component";
 import SignInAndSignUpPage from "./pages/sign-in-page/sign-in-sign-up-page.component";
 import { setCurrentUser, userSelector } from "./redux/user/user.slice";
@@ -55,10 +56,8 @@ export default function App(): JSX.Element {
 					<Route path="/shop" component={ShopPage} />
 					<Route path="/signin" render={redirectSignInPage} />
 					<Route path="/checkout" component={CheckoutPage} />
+					<Route path="/" component={NotFoundPageComponent} />
 				</Switch>
-				<div>
-					Icons made by <a href="http://www.freepik.com/" title="Freepik">Freepik</a>
-				</div>
 			</Container>
 		</MuiThemeProvider>
 	</Router>;
