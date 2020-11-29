@@ -21,5 +21,23 @@
 		"react",
 		"@typescript-eslint"
 	],
-	"rules": {}
+	"rules": {
+		"semi": "off",
+		"@typescript-eslint/semi": [
+			"error"
+		],
+		"@typescript-eslint/member-delimiter-style": [
+			"error",
+			{
+				"multiline": {
+					"delimiter": "semi",
+					"requireLast": true
+				},
+				"singleline": {
+					"delimiter": "semi",
+					"requireLast": true
+				}
+			}
+		]
+	}
 }
