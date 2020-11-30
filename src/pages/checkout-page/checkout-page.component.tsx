@@ -15,7 +15,7 @@ export default function CheckoutPage(): JSX.Element {
 	return (
 		<div className="container">
 			<TableContainer className="row">
-				<Table>
+				<Table className="col-8 mx-auto">
 					<TableHead>
 						<TableRow>
 							<TableCell align="center">Product</TableCell>
