@@ -1,4 +1,7 @@
+import { DocumentData, DocumentReference, QueryDocumentSnapshot, QuerySnapshot } from "@firebase/firestore-types";
 import firebase from "firebase";
+import "firebase/firestore";
+import ItemCollection from "../models/ItemCollection";
 import User from "../models/User";
 import { firebaseConfig } from "./firebase.config";
 
@@ -16,7 +19,7 @@ const firestoreService = firebase.firestore();
 export const createUserProfileDbDocument = async (
 	userAuth: firebase.User | null,
 	additionalData: Partial<User>
-): Promise<firebase.firestore.DocumentReference<firebase.firestore.DocumentData> | null> => {
+): Promise<DocumentReference<DocumentData> | null> => {
 	if (!userAuth) {
 		return null;
 	}
@@ -42,5 +45,35 @@ export const createUserProfileDbDocument = async (
 
 	return userDocRef;
 };
+
+export const addCollectionToFirebase = async <T>(
+	collectionKey: string,
+	collectionMembers: Array<T>
+): Promise<void> => {
+	const collectionRef = firestoreService.collection(collectionKey);
+
+	const batch = firestoreService.batch();
+	collectionMembers.forEach((member: T) => {
+		const newDocRef = collectionRef.doc();
+		batch.set(newDocRef, member);
+	});
+
+	return await batch.commit();
+};
+
+export const convertCollectionsSnapshotToMap = (
+	collections: QuerySnapshot<DocumentData>
+): Array<ItemCollection> => (
+	collections.docs.map((doc: QueryDocumentSnapshot<DocumentData>) => {
+		const { title, items } = doc.data();
+
+		return {
+			id: doc.id,
+			title,
+			routeName: encodeURI(title.toLowerCase()),
+			items
+		};
+	})
+);
 
 export default firebase;

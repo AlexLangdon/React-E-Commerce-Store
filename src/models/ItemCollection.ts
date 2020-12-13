@@ -1,7 +1,7 @@
 import StoreItem from "./StoreItem";
 
-export default interface Collection {
-	id: number;
+export default interface ItemCollection {
+	id: string;
 	title: string;
 	routeName: string;
 	items: Array<StoreItem>;

@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import Collection from "../../models/Collection";
+import ItemCollection from "../../models/ItemCollection";
 import { collectionsSelector } from "../../redux/store-items/store-items.slice";
 import CollectionPreview from "../collection-view/collection-view.component";
 
@@ -9,7 +9,7 @@ export default function CollectionsOverview(): JSX.Element {
 
 	return <>
 		{
-			collections.map((collection: Collection) => (
+			collections.map((collection: ItemCollection) => (
 				<CollectionPreview key={collection.id} {...collection} />
 			))
 		}
