@@ -2,31 +2,59 @@ import { createSelector, createSlice, OutputSelector, PayloadAction } from "@red
 import ItemCollection from "../../models/ItemCollection";
 import { RootState } from "../root-reducer";
 
-const initialState: Array<ItemCollection> = [];
+interface StoreItemsState {
+	isFetching: boolean;
+	collections: Array<ItemCollection>;
+}
+
+const initialState: StoreItemsState = {
+	isFetching: false,
+	collections: []
+};
 
 const storeItemsSlice = createSlice({
 	name: "storeItems",
 	initialState,
 	reducers: {
-		setItemCollections(state: Array<ItemCollection>, action: PayloadAction<Array<ItemCollection>>): Array<ItemCollection> {
-			return action.payload;
+		fetchItemCollectionsStart(state: StoreItemsState): StoreItemsState {
+			return {
+				...state,
+				isFetching: true,
+			};
+		},
+		fetchItemCollectionsComplete(
+			state: StoreItemsState,
+			action: PayloadAction<Array<ItemCollection>>
+		): StoreItemsState {
+			return {
+				...state,
+				isFetching: false,
+				collections: action.payload
+			};
 		}
 	}
 });
 
 export const collectionsSelector = createSelector(
 	(state: RootState) => state.storeItems,
-	(collections: Array<ItemCollection>) => collections
+	(itemsState: StoreItemsState) => itemsState.collections
 );
 
-export const collectionWithRouteSelectorFactory = (targetRouteName: string):
-	OutputSelector<RootState, ItemCollection | undefined, (res: ItemCollection[]) => ItemCollection | undefined> =>
-	createSelector(
-		collectionsSelector,
-		(collections: Array<ItemCollection>) => collections.find(
-			(collection: ItemCollection) => collection.routeName === targetRouteName
-		)
-	);
+export const collectionWithRouteSelectorFactory = (targetRouteName: string): OutputSelector<
+	RootState,
+	ItemCollection | undefined,
+	(res: ItemCollection[]) => ItemCollection | undefined
+> => createSelector(
+	collectionsSelector,
+	(collections: Array<ItemCollection>) => collections.find(
+		(collection: ItemCollection) => collection.routeName === targetRouteName
+	)
+);
 
-export const { setItemCollections } = storeItemsSlice.actions;
+export const isFetchingCollections = createSelector(
+	(state: RootState) => state.storeItems,
+	(itemsState: StoreItemsState) => itemsState.isFetching
+);
+
+export const { fetchItemCollectionsStart, fetchItemCollectionsComplete } = storeItemsSlice.actions;
 export default storeItemsSlice.reducer;

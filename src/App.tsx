@@ -13,7 +13,7 @@ import HomePage from "./pages/home-page/home-page.component";
 import NotFoundPageComponent from "./pages/not-found-page/not-found-page.component";
 import ShopPage from "./pages/shop-page/shop-page.component";
 import SignInAndSignUpPage from "./pages/sign-in-page/sign-in-sign-up-page.component";
-import { setItemCollections } from "./redux/store-items/store-items.slice";
+import { fetchItemCollectionsComplete, fetchItemCollectionsStart } from "./redux/store-items/store-items.slice";
 import { setCurrentUser, userSelector } from "./redux/user/user.slice";
 import { appTheme } from "./theme";
 
@@ -24,11 +24,17 @@ export default function App(): JSX.Element {
 
 	// Fire effect only on component mount and unmount
 	useEffect(() => {
-		// Load store item collections
+		// Load store item collections from firebase
 		const collectionRef = firebase.firestore().collection("collections");
+		// Show loading spinner
+		stableDispatch(fetchItemCollectionsStart());
 		collectionRef.get().then(snapshot => {
+			// Store results
 			const collectionsMap = convertCollectionsSnapshotToMap(snapshot);
-			stableDispatch(setItemCollections(collectionsMap));
+			stableDispatch(fetchItemCollectionsComplete(collectionsMap));
+		}).catch(() => {
+			// If error loading then show no results
+			stableDispatch(fetchItemCollectionsComplete([]));
 		});
 
 		// Sign in via Firebase auth service and return function for unsubscribing from Firebase
@@ -50,6 +56,7 @@ export default function App(): JSX.Element {
 			}
 		});
 
+		// Unsubscribe from firebase on unmount
 		return () => {
 			unsubFromAuth();
 		};
