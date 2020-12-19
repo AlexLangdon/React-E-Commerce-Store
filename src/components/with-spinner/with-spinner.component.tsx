@@ -1,6 +1,5 @@
-import { CircularProgress } from "@material-ui/core";
 import React from "react";
-import "./with-spinner.component.scss";
+import PageSpinner from "../page-spinner/page-spinner.component";
 
 interface WithSpinnerComponentProps {
 	isLoading: boolean;
@@ -9,9 +8,7 @@ interface WithSpinnerComponentProps {
 export default function WithSpinnerComponent<T>(WrappedComponent: React.ComponentType<T>):
 	React.FunctionComponent<T & WithSpinnerComponentProps> {
 	const Spinner = ({ isLoading, ...otherProps }: WithSpinnerComponentProps) => (
-		isLoading ? <div>
-			<CircularProgress size={120} className="spinner mx-auto" />
-		</div> : <WrappedComponent {...otherProps as T} />
+		isLoading ? <PageSpinner /> : <WrappedComponent {...otherProps as T} />
 	);
 
 	return Spinner;

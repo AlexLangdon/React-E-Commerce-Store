@@ -1,21 +1,23 @@
 
 import { Container, MuiThemeProvider } from "@material-ui/core";
 import firebase from "firebase";
-import React, { useCallback, useEffect } from "react";
+import React, { lazy, Suspense, useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter as Router, Redirect, Route, Switch } from "react-router-dom";
 import "./App.css";
 import Header from "./components/header/header.component";
+import PageSpinner from "./components/page-spinner/page-spinner.component";
 import { authService, convertCollectionsSnapshotToMap, createUserProfileDbDocument } from "./firebase/firebase.utils";
 import User from "./models/User";
-import CheckoutPage from "./pages/checkout-page/checkout-page.component";
-import HomePage from "./pages/home-page/home-page.component";
 import NotFoundPageComponent from "./pages/not-found-page/not-found-page.component";
-import ShopPage from "./pages/shop-page/shop-page.component";
-import SignInAndSignUpPage from "./pages/sign-in-page/sign-in-sign-up-page.component";
 import { fetchItemCollectionsComplete, fetchItemCollectionsStart } from "./redux/store-items/store-items.slice";
 import { setCurrentUser, userSelector } from "./redux/user/user.slice";
 import { appTheme } from "./theme";
+
+const HomePage = lazy(() => import("./pages/home-page/home-page.component"));
+const ShopPage = lazy(() => import("./pages/shop-page/shop-page.component"));
+const SignInAndSignUpPage = lazy(() => import("./pages/sign-in-page/sign-in-sign-up-page.component"));
+const CheckoutPage = lazy(() => import("./pages/checkout-page/checkout-page.component"));
 
 export default function App(): JSX.Element {
 	const dispatch = useDispatch();
@@ -71,10 +73,12 @@ export default function App(): JSX.Element {
 			<Container>
 				<Header />
 				<Switch>
-					<Route path="/" exact component={HomePage} />
-					<Route path="/shop" component={ShopPage} />
-					<Route path="/signin" render={redirectSignInPage} />
-					<Route path="/checkout" component={CheckoutPage} />
+					<Suspense fallback={<PageSpinner />}>
+						<Route path="/" exact component={HomePage} />
+						<Route path="/shop" component={ShopPage} />
+						<Route path="/signin" render={redirectSignInPage} />
+						<Route path="/checkout" component={CheckoutPage} />
+					</Suspense>
 					<Route path="/" component={NotFoundPageComponent} />
 				</Switch>
 			</Container>
