@@ -1,3 +1,64 @@
+/* saira-200 - latin */
+@font-face {
+	font-family: 'Saira';
+	font-style: normal;
+	font-weight: 200;
+	src: local(''),
+			url('./assets/fonts/mem9Ya2wxmKQyNHobIYScrg.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+		  	url('./assets/fonts/mem9Ya2wxmKQyNHobLYW.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+ }
+ 
+ /* saira-300 - latin */
+ @font-face {
+	font-family: 'Saira';
+	font-style: normal;
+	font-weight: 300;
+	src: local(''),
+			url('./assets/fonts/mem9Ya2wxmKQyNGMb4YScrg.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+			url('./assets/fonts/mem9Ya2wxmKQyNGMb7YW.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+ }
+ 
+ /* saira-regular - latin */
+ @font-face {
+	font-family: 'Saira';
+	font-style: normal;
+	font-weight: 400;
+	src: local(''),
+			url('./assets/fonts/memwYa2wxmKQyNknTZM.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+			url('./assets/fonts/memwYa2wxmKQyOkj.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+ }
+ 
+ /* saira-500 - latin */
+ @font-face {
+	font-family: 'Saira';
+	font-style: normal;
+	font-weight: 500;
+	src: local(''),
+			url('./assets/fonts/mem9Ya2wxmKQyNHUboYScrg.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+			url('./assets/fonts/mem9Ya2wxmKQyNHUbrYW.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+ }
+ 
+ /* saira-600 - latin */
+ @font-face {
+	font-family: 'Saira';
+	font-style: normal;
+	font-weight: 600;
+	src: local(''),
+		  url('./assets/fonts/mem9Ya2wxmKQyNH4aYYScrg.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+		  url('./assets/fonts/mem9Ya2wxmKQyNH4abYW.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+ }
+ 
+ /* saira-700 - latin */
+ @font-face {
+	font-family: 'Saira';
+	font-style: normal;
+	font-weight: 700;
+	src: local(''),
+		  url('./assets/fonts/mem9Ya2wxmKQyNGcaIYScrg.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+		  url('./assets/fonts/mem9Ya2wxmKQyNGcaLYW.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+ }
+ 
+
 body {
   margin: 0;
   font-family: "Saira", sans-serif;
