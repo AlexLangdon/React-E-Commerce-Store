@@ -10,7 +10,7 @@ export default function StoreItemCard(props: StoreItem): JSX.Element {
 
 	return <Card className="collection-item">
 		<CardMedia className="item-media" image={props.imageUrl}>
-			<div className="add-to-cart-button" onClick={() => dispatch(addItemToCart(props))}>
+			<div className="add-to-cart-button d-xs-block d-lg-none" onClick={() => dispatch(addItemToCart(props))}>
 				Add To Cart
 			</div>
 		</CardMedia>
