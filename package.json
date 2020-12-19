@@ -29,7 +29,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint . --ext .tsx,.ts,.js"
+	 "lint": "eslint . --ext .tsx,.ts,.js",
+	 "start-sw": "http-server ./build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -47,16 +48,17 @@
     ]
   },
   "devDependencies": {
-		"@types/jest": "^24.0.0",
-		"@types/node": "^12.0.0",
-		"@types/react": "^16.9.55",
-		"@types/react-dom": "^16.9.9",
-		"@types/react-router-dom": "^5.1.5",
-		"@types/react-redux": "^7.1.9",
-		"@types/redux-logger": "^3.0.8",
-		"@types/redux-persist": "^4.3.1",
-		"@typescript-eslint/eslint-plugin": "^4.8.2",
-		"@typescript-eslint/parser": "^4.8.2",
-		"eslint-plugin-react": "^7.21.5"
-	}
+    "@types/jest": "^24.0.0",
+    "@types/node": "^12.0.0",
+    "@types/react": "^16.9.55",
+    "@types/react-dom": "^16.9.9",
+    "@types/react-redux": "^7.1.9",
+    "@types/react-router-dom": "^5.1.5",
+    "@types/redux-logger": "^3.0.8",
+    "@types/redux-persist": "^4.3.1",
+    "@typescript-eslint/eslint-plugin": "^4.8.2",
+    "@typescript-eslint/parser": "^4.8.2",
+    "eslint-plugin-react": "^7.21.5",
+    "http-server": "^0.12.3"
+  }
 }
