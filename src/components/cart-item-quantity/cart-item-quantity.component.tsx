@@ -11,15 +11,15 @@ export default function CartItemQuantity(props: CartEntryProps): JSX.Element {
 	const dispatch = useDispatch();
 
 	return (
-		<div>
-			<IconButton color="primary" aria-label="add-item" size="small"
-				onClick={() => dispatch(addItemToCart(props.item))}>
-				<AddIcon />
-			</IconButton>
-			<span className="quantity">{props.quantity}</span>
+		<div className="item-quantity-wrapper">
 			<IconButton color="primary" aria-label="remove-item" size="small"
 				onClick={() => dispatch(removeSingleCartItemById(props.item.id))}>
 				<RemoveIcon />
+			</IconButton>
+			<span className="quantity">{props.quantity}</span>
+			<IconButton color="primary" aria-label="add-item" size="small"
+				onClick={() => dispatch(addItemToCart(props.item))}>
+				<AddIcon />
 			</IconButton>
 		</div>
 	);

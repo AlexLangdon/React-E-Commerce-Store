@@ -1,4 +1,3 @@
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@material-ui/core";
 import { Alert } from "@material-ui/lab";
 import AlertTitle from "@material-ui/lab/AlertTitle";
 import React from "react";
@@ -7,6 +6,7 @@ import CheckoutTableRow from "../../components/checkout-table-row/checkout-table
 import StripeCheckoutButton from "../../components/stripe-checkout-button/stripe-checkout-button";
 import CartEntryProps from "../../models/CartEntryProps";
 import { cartEntriesSelector, cartTotalCostSelector } from "../../redux/cart/cart.slice";
+import "./checkout-page.component.scss";
 
 export default function CheckoutPage(): JSX.Element {
 	const entries = useSelector(cartEntriesSelector);
@@ -14,43 +14,33 @@ export default function CheckoutPage(): JSX.Element {
 
 	return (
 		<div className="container">
-			<TableContainer className="row">
-				<Table className="col-8 mx-auto">
-					<TableHead>
-						<TableRow>
-							<TableCell align="center">Product</TableCell>
-							<TableCell align="center">Description</TableCell>
-							<TableCell align="center">Quantity</TableCell>
-							<TableCell align="center">Price</TableCell>
-							<TableCell align="center">Remove</TableCell>
-						</TableRow>
-					</TableHead>
-					<TableBody>
-						{
-							entries.map((entry: CartEntryProps) => (
-								<CheckoutTableRow key={entry.item.id} {...entry} />
-							))
-						}
-						<TableRow>
-							<TableCell colSpan={4} />
-							<TableCell align="center"><b>TOTAL: £{totalCost}</b></TableCell>
-						</TableRow>
-						<TableRow>
-							<TableCell colSpan={4}>
-								<Alert severity="warning">
-									<AlertTitle>
-										Please use the following credit card details for testing:
-									</AlertTitle>
-									Card number: 4242 4242 4242 4242 - Exp: 01/50 - CVV: 123
-								</Alert>
-							</TableCell>
-							<TableCell align="center">
-								<StripeCheckoutButton price={totalCost} />
-							</TableCell>
-						</TableRow>
-					</TableBody>
-				</Table>
-			</TableContainer>
+			{
+				entries.map(
+					(entry: CartEntryProps) => (
+						<CheckoutTableRow key={entry.item.id} {...entry} />
+					)
+				)
+			}
+			<hr />
+			<div className="total-sum">
+				<span className="ml-auto mr-3">TOTAL: £{totalCost}</span>
+			</div>
+			<hr />
+			<div className="row">
+				<div className="col-sm-8 mb-3">
+					<Alert severity="warning">
+							<AlertTitle>
+								Please use the following credit card details for testing:
+							</AlertTitle>
+							Card number: 4242 4242 4242 4242
+							<br />
+							Exp: 01/50 - CVV: 123
+					</Alert>
+				</div>
+				<div className="col-sm-4 d-flex justify-content-center">
+					<StripeCheckoutButton price={totalCost} />
+				</div>
+			</div>
 		</div>
 	);
 }

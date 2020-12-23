@@ -1,4 +1,11 @@
-.quantity {
-	display: block;
-	text-align: center;
+.item-quantity-wrapper {
+	flex-wrap: wrap-reverse;
+	display: flex;
+	align-items: center;
+	
+	.quantity {
+		display: block;
+		text-align: center;
+		width: 30px;
+	}
 }

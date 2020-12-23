@@ -1,4 +1,4 @@
-import { IconButton, TableCell, TableRow } from "@material-ui/core";
+import { Button, Card, CardContent, CardMedia, IconButton, TableCell, TableRow } from "@material-ui/core";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import React from "react";
 import { useDispatch } from "react-redux";
@@ -10,19 +10,27 @@ import "./checkout-table-row.component.scss";
 export default function CheckoutTableRow(props: CartEntryProps): JSX.Element {
 	const dispatch = useDispatch();
 
-	return <TableRow key={props.item.id}>
-		<TableCell align="center">
-			<img className="product-image" src={props.item.imageUrl} alt={props.item.name} />
-		</TableCell>
-		<TableCell align="center">{props.item.name}</TableCell>
-		<TableCell align="center">
-			<CartItemQuantity {...props} />
-		</TableCell>
-		<TableCell align="center">£{props.item.price}</TableCell>
-		<TableCell align="center">
-			<IconButton onClick={() => dispatch(removeAllCartItemsById(props.item.id))}>
-				<DeleteForeverIcon color="primary" />
-			</IconButton>
-		</TableCell>
-	</TableRow>;
+	return (
+		<Card className="checkout-item">
+			<CardMedia className="product-image col-3" image={props.item.imageUrl} title={props.item.name} />
+			<CardContent className="content w-100">
+				<div className="row">
+					<h5>{props.item.name}</h5>
+					<Button className="ml-2" onClick={() => dispatch(removeAllCartItemsById(props.item.id))} 
+						color="primary" endIcon={<DeleteForeverIcon color="primary" />}>
+						Remove
+					</Button>
+				</div>
+				<div className="row align-items-center">
+					<div className="d-inline-flex align-items-center">
+						<div className="quantity-label">Quantity: </div><div className="quantity-selector"><CartItemQuantity {...props} /></div>
+					</div>
+					<div>Unit Price: £{props.item.price}</div>
+				</div>
+				<div className="row align-items-end mt-2">
+					<div className="ml-sm-auto sub-total">Sub Total: £{props.item.price * props.quantity}</div>
+				</div>
+			</CardContent>
+		</Card>
+	)
 }
