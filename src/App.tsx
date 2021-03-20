@@ -72,15 +72,17 @@ export default function App(): JSX.Element {
 		<MuiThemeProvider theme={appTheme}>
 			<Container>
 				<Header />
-				<Switch>
-					<Suspense fallback={<PageSpinner />}>
-						<Route path="/" exact component={HomePage} />
-						<Route path="/shop" component={ShopPage} />
-						<Route path="/signin" render={redirectSignInPage} />
-						<Route path="/checkout" component={CheckoutPage} />
-					</Suspense>
-					<Route path="/" component={NotFoundPageComponent} />
-				</Switch>
+				<main>
+					<Switch>
+						<Suspense fallback={<PageSpinner />}>
+							<Route path="/" exact component={HomePage} />
+							<Route path="/shop" component={ShopPage} />
+							<Route path="/signin" render={redirectSignInPage} />
+							<Route path="/checkout" component={CheckoutPage} />
+						</Suspense>
+						<Route path="/" component={NotFoundPageComponent} />
+					</Switch>
+				</main>
 			</Container>
 		</MuiThemeProvider>
 	</Router>;

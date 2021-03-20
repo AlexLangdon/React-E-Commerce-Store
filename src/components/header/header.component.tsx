@@ -12,8 +12,8 @@ import "./header.component.scss";
 export default function Header(): JSX.Element {
 	const currentUser = useSelector(userSelector);
 
-	return <div className="header d-flex justify-content-between flex-wrap">
-		<Link className="logo-container" to="/">
+	return <header className="header d-flex justify-content-between flex-wrap">
+		<Link className="logo-container" to="/" aria-label="Logo">
 			<Logo className="logo" />
 		</Link>
 		<div className="options">
@@ -41,5 +41,5 @@ export default function Header(): JSX.Element {
 				<CartDropdown />
 			</div>
 		</div>
-	</div>;
+	</header>;
 }
