@@ -1,12 +1,13 @@
 
-# Neo Apparel Store <img align="left" src="./public/favicon.ico"></img><br clear="left"/>
+<img align="left" style="margin-right: 20px" src="./public/favicon.ico"></img><br clear="right"/>
 
+# Neo Apparel Store
 Simple e-commerce application project for learning React
 
 Live - https://neo-apparel-live.herokuapp.com/
 
 ## Features:
-- React Hooks for more functional component style.
+- React Hooks for more a modern functional component style.
 - Fully responsive design for mobile/desktop support.
 - User registration and Login form via Email and Google accounts.
 - Maintains Shopping Cart contents in local browser storage.
@@ -15,12 +16,12 @@ Live - https://neo-apparel-live.herokuapp.com/
 - Fully qualified as a “PWA Optimised” progressive web app, and scores 100% on Accessibility, Best Practices and SEO metrics according to Chrome Lighthouse checks (at the time of writing).
 
 ## Libraries used:
-- Material UI for consistent theming and React form/layout components
-- Redux and Redux Toolkit for UI state management
+- Material UI for consistent theming and React form/layout components.
+- Redux and Redux Toolkit for UI state management.
 - Database and user login authentication hosted on Firebase cloud
-Heroku for convenient deployment and hosting of the project instance
+Heroku for convenient deployment and hosting of the project instance.
     
-Disclaimer - Project is based on the material in the Complete React Developer course - https://www.udemy.com/course/complete-react-developer-zero-to-mastery/ 
+Disclaimer - Project is based on the material from the Complete React Developer course - https://www.udemy.com/course/complete-react-developer-zero-to-mastery/ 
 
 
 ---
