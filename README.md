@@ -1,5 +1,5 @@
 
-<img align="left" style="margin-right: 20px" src="./public/favicon.ico"></img><br clear="right"/>
+# Neo Apparel Store <img align="left" src="./public/favicon.ico"></img><br clear="left"/>
 
 # Neo Apparel Store
 Simple e-commerce application project for learning React
