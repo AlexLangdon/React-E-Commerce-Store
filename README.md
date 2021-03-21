@@ -7,11 +7,11 @@ Simple e-commerce application project for learning React
 Live - https://neo-apparel-live.herokuapp.com/
 
 ## Features:
-- React Hooks for more a modern functional component style.
 - Fully responsive design for mobile/desktop support.
 - User registration and Login form via Email and Google accounts.
 - Maintains Shopping Cart contents in local browser storage.
 - Integrates with Stripe API for a simulated payment process - NOTE: No payment details will be recorded or charged in any way.
+- React Hooks for more a modern functional component style.
 - React.lazy to only load page code when required by navigation.
 - Fully qualified as a “PWA Optimised” progressive web app, and scores 100% on Accessibility, Best Practices and SEO metrics according to Chrome Lighthouse checks (at the time of writing).
 
