@@ -1,6 +1,6 @@
 
 import { Container, MuiThemeProvider } from "@material-ui/core";
-import firebase from "firebase";
+import {User as FirebaseUser, firestore} from "firebase/app";
 import React, { lazy, Suspense, useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter as Router, Redirect, Route, Switch } from "react-router-dom";
@@ -27,7 +27,7 @@ export default function App(): JSX.Element {
 	// Fire effect only on component mount and unmount
 	useEffect(() => {
 		// Load store item collections from firebase
-		const collectionRef = firebase.firestore().collection("collections");
+		const collectionRef = firestore().collection("collections");
 		// Show loading spinner
 		stableDispatch(fetchItemCollectionsStart());
 		collectionRef.get().then(snapshot => {
@@ -40,7 +40,7 @@ export default function App(): JSX.Element {
 		});
 
 		// Sign in via Firebase auth service and return function for unsubscribing from Firebase
-		const unsubFromAuth = authService.onAuthStateChanged(async (userAuth: firebase.User | null) => {
+		const unsubFromAuth = authService.onAuthStateChanged(async (userAuth: FirebaseUser | null) => {
 			if (userAuth) {
 				// Set local user state based on the received user account
 				const userDocument = await createUserProfileDbDocument(userAuth, {});

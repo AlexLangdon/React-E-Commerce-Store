@@ -1,6 +1,7 @@
 import { DocumentData, DocumentReference, QueryDocumentSnapshot, QuerySnapshot } from "@firebase/firestore-types";
-import firebase from "firebase";
+import firebase from "firebase/app";
 import "firebase/firestore";
+import "firebase/auth";
 import ItemCollection from "../models/ItemCollection";
 import User from "../models/User";
 import { firebaseConfig } from "./firebase.config";
@@ -39,7 +40,7 @@ export const createUserProfileDbDocument = async (
 				...additionalData
 			});
 		} catch (error) {
-			console.error("Error creating user", error.message);
+			console.error("Error creating user", (error as Error)?.message);
 		}
 	}
 
@@ -75,5 +76,3 @@ export const convertCollectionsSnapshotToMap = (
 		};
 	})
 );
-
-export default firebase;
