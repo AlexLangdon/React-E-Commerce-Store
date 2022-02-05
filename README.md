@@ -5,6 +5,8 @@ Simple e-commerce application project for learning React
 
 Live - https://neo-apparel-live.herokuapp.com/
 
+![Project Demo GIF](demo.gif)
+
 ## Features:
 - Fully responsive design for mobile/desktop support.
 - User registration and Login form via Email and Google accounts.
