@@ -1,11 +1,17 @@
 
 # Neo Apparel Store <img align="left" src="./public/favicon-white.ico" style="margin-right: 15px"/><br clear="left"/>
 
-Simple e-commerce application project for learning React
+E-commerce application project created using React, Redux and Firebase cloud backend.
 
 Live - https://neo-apparel-live.herokuapp.com/
 
 ![Project Demo GIF](demo.gif)
+
+## Libraries/Tech Stack used:
+- **Material UI** for consistent theming and React form/layout components.
+- **Redux and Redux Toolkit** for UI state management.
+- **Firebase cloud** for Database and user login authentication hosted on 
+- **Heroku** for convenient deployment and hosting of the project instance.
 
 ## Features:
 - Fully responsive design for mobile/desktop support.
@@ -15,15 +21,6 @@ Live - https://neo-apparel-live.herokuapp.com/
 - React Hooks for more a modern functional component style.
 - React.lazy to only load page code when required by navigation.
 - Fully qualified as a “PWA Optimised” progressive web app, and scores 100% on Accessibility, Best Practices and SEO metrics according to Chrome Lighthouse checks (at the time of writing).
-
-## Libraries used:
-- Material UI for consistent theming and React form/layout components.
-- Redux and Redux Toolkit for UI state management.
-- Database and user login authentication hosted on Firebase cloud
-Heroku for convenient deployment and hosting of the project instance.
-    
-Disclaimer - Project is based on the material from the Complete React Developer course - https://www.udemy.com/course/complete-react-developer-zero-to-mastery/ 
-
 
 ---
 
